@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Setup Node.js environment
-      uses: actions/setup-node@v2-beta
+      uses: actions/setup-node@v2.1.1
       with:
         version: 12
         
@@ -32,10 +32,7 @@ jobs:
       with:
         # Yarn command
         cmd: install #npm install / yarn install
-        
-    - name: build Sass
-      run: yarn add node-sass
-      
+              
     - name: Create Build
       run: yarn build
         
