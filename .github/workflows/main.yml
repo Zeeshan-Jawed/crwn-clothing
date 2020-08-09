@@ -33,7 +33,7 @@ jobs:
         # Yarn command
         cmd: install #npm install / yarn install
     - name: Rebuild sass
-      run: npm rebuild node-sass
+      run: npm rebuild node-sass --force
               
     - name: Create Build
       run: yarn build
