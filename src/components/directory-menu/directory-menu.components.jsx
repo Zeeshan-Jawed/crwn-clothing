@@ -1,12 +1,12 @@
 import React from 'react';
-import './directory.scss';
-import  Menuitem  from '../menu-item/menu-item';
+import { Menuitem } from '../menu-item/menu-item.components';
+import './directory-menu.style.scss'
 
-class Directory extends React.Component{
+class Directorymenu extends React.Component{
     constructor(){
         super();
         this.state={
-            sections:[
+            sections : [
                 {
                   title: 'hats',
                   imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -40,17 +40,18 @@ class Directory extends React.Component{
                   linkUrl: 'shop/mens'
                 }
               ]
-              
         }
     }
-render(){
-    return(
-        <div className="directory-menu">
-            {this.state.sections.map(({id,title,imageUrl,size,linkUrl})=>(
-                <Menuitem key={id} title={title} imageUrl={imageUrl} size={size} linkUrl={linkUrl}/>
-            ))}
-        </div>
-    )
+    render(){
+        return(
+            <div className="directory-menu">
+                {
+                    this.state.sections.map(({title,imageUrl,id,size}) => (
+                    <Menuitem key={id} title={title} imageUrl={imageUrl} size={size} />
+                    ))
+                }
+                </div>
+        )
+    }
 }
-}
-export default Directory;
+export default Directorymenu
