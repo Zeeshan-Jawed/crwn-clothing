@@ -17,11 +17,11 @@ import {auth} from  '../../firebase/firebase.utils'
         CONTACT
       </Link>
       {currentUser ? (
-        <div onClick={() => auth.signOut()}>
+        <div onClick={() => auth.signOut()} className='option'>
           SIGN OUT
         </div>
       ) : (
-        <Link to='/signin'>SIGN IN</Link>
+        <Link to='/signin' className='option'>SIGN IN</Link>
       )}
     </div>
   </div>

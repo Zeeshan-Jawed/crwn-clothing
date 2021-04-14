@@ -3,7 +3,7 @@
 import React from 'react';
 import './App.css';
 import AppRouter from './config/Router';
-import {auth} from  './firebase/firebase.utils'
+import {auth,createUserProfileDocuments} from  './firebase/firebase.utils'
 
 class App extends React.Component {
   constructor(){
@@ -14,8 +14,21 @@ class App extends React.Component {
   }
   unsSubcribeFromAuth=null;
   componentDidMount(){
-    this.unsSubcribeFromAuth=  auth.onAuthStateChanged(user => {
-        this.setState({currentUser:user});
+    this.unsSubcribeFromAuth=  auth.onAuthStateChanged(async userAuth => {
+        if(userAuth){
+          const userRef= await createUserProfileDocuments(userAuth);
+          userRef.onSnapshot(snapshot=>{
+            this.setState({
+              currentUser:{
+              id:snapshot.id,
+              ...snapshot.data()
+            }
+            });
+          });
+          
+        }
+        else this.setState({currentUser:userAuth})
+
       })
   }
   componentWillUnmount(){
