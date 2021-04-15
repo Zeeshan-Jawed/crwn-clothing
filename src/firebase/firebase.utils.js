@@ -17,7 +17,6 @@ export const createUserProfileDocuments=async(userAuth,addtionalData)=>{
 
   const userRef=firestore.doc(`users/${userAuth.uid}`)
   const snapshot =await userRef.get()
-  console.log(snapshot)
   if (!snapshot.exists){
     const{displayName ,email}=userAuth;
     const createAt=new Date();
