@@ -39,8 +39,11 @@ class App extends React.Component {
     );
   }
 }
+const mapStatetoProps=({user})=>({
+  currentUser:user.currentUser
+})
 const matchDispatchToProps=dispatch=>({
     setCurrentUser:user=>dispatch(setCurrentUser(user))
 })
 
-export default connect(null,matchDispatchToProps)(App);
+export default connect(mapStatetoProps,matchDispatchToProps)(App);
