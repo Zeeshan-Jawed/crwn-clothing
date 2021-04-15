@@ -4,12 +4,12 @@ import Homepage from '../pages/homepage/homepage.components'
 import Shop from '../components/shop/shop.component'
 import Header from '../components/header/header.component';
 import SignInAndSignUpPage from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
-const AppRouter=({currentUser})=>{
+const AppRouter=()=>{
   return(
     <div> 
                 
             <Router>
-            <Header currentUser={currentUser}/>
+            <Header/>
             <Switch>
             <Route exact path='/' component={Homepage} />
             <Route path='/shop' component={Shop} />
